@@ -26,17 +26,22 @@
 
 // constants won't change. They're used here to
 // set pin numbers:
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin =  13;      // the number of the LED pin
+const int timerPin = 2;     // the number of the pushbutton pin
+const int ledPin =  4;      // the number of the LED pin
+const int touchPin = 13;
+const int speakerPin = 9;
 
+int timerCount = 0;
 // variables will change:
 int buttonState = 0;         // variable for reading the pushbutton status
 
 void setup() {
   // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);
+  pinMode(speakerPin, OUTPUT);
   // initialize the pushbutton pin as an input:
-  pinMode(buttonPin, INPUT);
+  pinMode(touchPin, INPUT);
+  pinMode(timerPin, INPUT);
 }
 
 //pinMode(pin, INPUT); // Anschluss als Eingang definieren
@@ -44,8 +49,10 @@ void setup() {
 
 void loop() {
   // read the state of the pushbutton value:
-  buttonState = digitalRead(buttonPin);
-
+  //buttonState = digitalRead(buttonPin);
+  
+  timerCount += 1;
+  
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
